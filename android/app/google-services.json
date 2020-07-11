@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "981811720291",
+    "firebase_url": "https://co-location-e7518.firebaseio.com",
+    "project_id": "co-location-e7518",
+    "storage_bucket": "co-location-e7518.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981811720291:android:a06df041c57f8584144856",
+        "android_client_info": {
+          "package_name": "com.benhirt.co_location"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981811720291-l2tdis6j700adctnbkjeoek90hdlu8vq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsr1AVSsH4PR4FUzDuErRRdhm7rWZ0Y-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981811720291-l2tdis6j700adctnbkjeoek90hdlu8vq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
