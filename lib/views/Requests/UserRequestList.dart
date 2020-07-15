@@ -1,5 +1,6 @@
 import 'package:co_location/Models/Request.dart';
 import 'package:co_location/Models/User.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'UserRequestTile.dart';
@@ -31,11 +32,19 @@ class _UserRequestListState extends State<UserRequestList> {
     final requests = Provider.of<List<Request>>(context);
     
     List<Request> userRequest= new List<Request>();
-    final u = Provider.of<User>(context);
+    //final u = Provider.of<User>(context);
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    getUser() async{
+      FirebaseUser u = await _auth.currentUser();
+      return u;
+
+    }
+    String u = getUser().toString();
+    print(u);
     
     for (var request in requests) {
       
-     if(request.uid==u.uid) 
+     if(request.uid==u)
      userRequest.add(request);
     }
     return ListView.builder(

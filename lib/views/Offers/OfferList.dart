@@ -13,6 +13,7 @@ class _OfferListState extends State<OfferList> {
   Widget build(BuildContext context) {
 
     final offers = Provider.of<List<Offer>>(context);
+    
 
     return ListView.builder(
       itemCount: offers.length,

@@ -1,5 +1,7 @@
 import 'package:co_location/views/Offers/AddOffer.dart';
+import 'package:co_location/views/Offers/MyOffers.dart';
 import 'package:co_location/views/Requests/AddRequest.dart';
+import 'package:co_location/views/Requests/MyRequests.dart';
 import 'package:flutter/material.dart';
 
 import 'home.dart';
@@ -49,14 +51,9 @@ class Menu extends StatelessWidget {
             
             ListTile(
               leading: Icon(Icons.home),
-              title: Text('Accueil',style: TextStyle(
-                      
-                      fontSize: 14,
-                      fontStyle: FontStyle.normal,
-                      fontWeight: FontWeight.normal
+              title: Text('Accueil'
                     ),
-              ),
-              
+
               dense:false,
               onTap: () {
                 
@@ -64,7 +61,7 @@ class Menu extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) =>
                         Home()
-                  ),
+                  )
                 );
               },
             ),
@@ -84,6 +81,20 @@ class Menu extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: Icon(Icons.add),
+              title: Text('Mes offres'),
+              dense:false,
+
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MyOffers()
+                  ),
+                );
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.add_box),
               title: Text('Ajouter une demande'),
               dense:false,
@@ -93,6 +104,20 @@ class Menu extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) =>
                         AddRequest()
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.add),
+              title: Text('Mes demandes'),
+              dense:false,
+
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MyRequests()
                   ),
                 );
               },

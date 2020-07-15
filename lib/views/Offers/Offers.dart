@@ -13,17 +13,17 @@ class Offers extends StatelessWidget{
     return StreamProvider<List<Offer>>.value(
         value: DatabaseService().offers,
               child: Scaffold(
-          drawer: Menu(),
-          appBar: AppBar(
-            title: Text('All Offers'),
-            
-            backgroundColor: Colors.indigo[300],
-            elevation: 0.0,
-           
-          ),
-          body: OfferList()
-        ),
+                drawer: Menu(),
+                appBar: AppBar(
+                  title: Text('All Offers'),
+
+                  backgroundColor: Colors.indigo[300],
+                  elevation: 0.0,
+
+                ),
+                body: OfferList()
+              ),
       );
-   
+
   }
 }

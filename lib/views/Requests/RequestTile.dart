@@ -1,4 +1,5 @@
   import 'package:co_location/Models/Request.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RequestTile extends StatelessWidget {
@@ -9,21 +10,21 @@ class RequestTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding:  EdgeInsets.only(top: 8.0),
       child: Card(
         margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
         child: ListTile(
-          leading: CircleAvatar(
-            radius: 25.0,
+          leading: Icon(Icons.error_outline,color: Colors.redAccent[700],size: 50,
+
            
           ),
-          title: Text(request.maxBudget.toString()+ ' DH'),
+          title: Text('Budget :'+ request.maxBudget.toString()+ ' DH'),
           subtitle: Text(request.comment),
           onTap: () {
             showDialog(
                 context: context,
-                child: new SimpleDialog(
-                  title: new Text(
+                child:  SimpleDialog(
+                  title:  Text(
                     request.user_name,
                     textAlign: TextAlign.center,
                     style :TextStyle(  

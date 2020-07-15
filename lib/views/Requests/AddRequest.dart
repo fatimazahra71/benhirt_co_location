@@ -3,6 +3,7 @@ import 'package:co_location/Models/User.dart';
 import 'package:co_location/Service/DatabaseService.dart';
 import 'package:co_location/views/Requests/MyRequests.dart';
 import 'package:co_location/views/Requests/Requests.dart';
+import 'package:co_location/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,7 @@ class _AddRequestState extends State<AddRequest>  {
           child: ListView(
             children: <Widget>[
               TextFormField(
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   labelText: 'Budget maximum ',
                 ),
                 validator: (val) => val.isEmpty ? 'Entrez le budget maximum' : null,
@@ -49,7 +50,7 @@ class _AddRequestState extends State<AddRequest>  {
               ),
               TextFormField(
                 
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   labelText: 'Préférences',
                 ),
                 validator: (val) => val.length < 5 ? 'Dites nous plus de vos préférences' : null,
@@ -68,7 +69,7 @@ class _AddRequestState extends State<AddRequest>  {
                     setState(() => loading = true);
                     
                     await _databaseService.updateUserRequest( new Request('','',buget, comment ,null,null,null));
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => MyRequests()));
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => Home()));
                   }
                 }
               ),

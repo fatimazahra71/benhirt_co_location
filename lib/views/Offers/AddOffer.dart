@@ -1,6 +1,7 @@
 import 'package:co_location/Models/Offer.dart';
 import 'package:co_location/Service/DatabaseService.dart';
 import 'package:co_location/views/Offers/MyOffers.dart';
+import 'package:co_location/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 class AddOffer extends StatefulWidget {
@@ -98,7 +99,7 @@ class _AddOfferState extends State<AddOffer> {
                       await _databaseService.updateUserOffer(new Offer('','',
                         address, surface, capacity, price, description, null,null,null ,null,null));
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => MyOffers()));
+                          MaterialPageRoute(builder: (context) => Home()));
                     }
                   }),
               SizedBox(height: 12.0),

@@ -14,7 +14,7 @@ class _MapState extends State<Map> {
         Marker(
            width: 45.0,
            height: 45.0,
-           point: LatLng(40.73, -74.00),
+           point: LatLng(31.6341600, -7.9999400),
            builder: (context) => Container(
                     child: IconButton(
                     icon: Icon(Icons.location_on),
@@ -38,7 +38,7 @@ class _MapState extends State<Map> {
         ),
         body:  FlutterMap(
             options:  MapOptions(
-                center: LatLng(-8.00, 31.63), minZoom: 0.0),
+                center: LatLng(31.6341600, -7.9999400 ), minZoom: 0.0, maxZoom: 20.00),
             layers: [
                TileLayerOptions(
                   urlTemplate:

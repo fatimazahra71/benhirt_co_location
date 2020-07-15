@@ -13,9 +13,10 @@ class _RequestListState extends State<RequestList> {
   Widget build(BuildContext context) {
 
     final requests = Provider.of<List<Request>>(context);
+    // Provider.of<List<Request>>(context);
 
     return ListView.builder(
-      itemCount: requests.length ?? 0,
+      itemCount: requests.length,
       itemBuilder: (context, index) {
         return RequestTile(request: requests[index]);
       },

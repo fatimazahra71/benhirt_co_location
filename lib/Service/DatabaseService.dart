@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:co_location/Models/Offer.dart';
 import 'package:co_location/Models/Request.dart';
 import 'package:co_location/Models/User.dart';
@@ -9,11 +8,11 @@ class DatabaseService {
   final String uid;
   DatabaseService({ this.uid });
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  
+
   // collection reference
-  final CollectionReference userCollection = Firestore.instance.collection('Users'); 
+  final CollectionReference userCollection = Firestore.instance.collection('Users');
   final CollectionReference offersCollection = Firestore.instance.collection('Offers');
-  final CollectionReference requestsCollection = Firestore.instance.collection('Requests'); 
+  final CollectionReference requestsCollection = Firestore.instance.collection('Requests');
 
   Future<void> updateUserData(User user) async {
     return await userCollection.document(user.uid).setData({
@@ -24,7 +23,7 @@ class DatabaseService {
   }
   Future<User> getUserInfo(String userId) async {
     var document =
-        Firestore.instance.collection("Users").document(userId).get();
+    Firestore.instance.collection("Users").document(userId).get();
     return await document.then((doc) {
       return new User(doc.data['uid'], doc.data['name'], doc.data['email'], doc.data['phone']);
     });
@@ -32,7 +31,7 @@ class DatabaseService {
   Future updateUserRequest(Request request) async {
     FirebaseUser user = await _auth.currentUser();
     User u =await  getUserInfo(user.uid);
-    
+
     return await requestsCollection.document().setData({
       'user_id' : user.uid,
       'maxBudget': request.maxBudget,
@@ -40,7 +39,7 @@ class DatabaseService {
       'user_phone' : u.phone,
       'user_email' : u.email,
       'user_name' : u.name,
-      
+
     });
   }
   Future updateUserOffer(Offer offer ) async {
@@ -61,18 +60,18 @@ class DatabaseService {
 
     });
   }
-  List<Request> _requestListFromSnapshot(QuerySnapshot snapshot) 
+  List<Request> _requestListFromSnapshot(QuerySnapshot snapshot)
   {
-     
+
     return snapshot.documents.map((doc){
       return Request(
-         doc.documentID,
+          doc.documentID,
           doc.data['user_id'],
-         doc.data['maxBudget'] ,
-         doc.data['comment'],
-         doc.data["user_name"],
-         doc.data["user_phone"],
-         doc.data["user_email"] 
+          doc.data['maxBudget'] ,
+          doc.data['comment'],
+          doc.data["user_name"],
+          doc.data["user_phone"],
+          doc.data["user_email"]
       );
     }).toList();
   }
@@ -80,24 +79,24 @@ class DatabaseService {
   // get Request stream
   Stream<List<Request>> get requests {
     return requestsCollection.snapshots()
-      .map(_requestListFromSnapshot);
+        .map(_requestListFromSnapshot);
   }
 
   List<Offer> _offersListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc){
       return Offer(
-         doc.documentID,
-         doc.data['user_id'],
-         doc.data['address'],
-         doc.data['surface'],
-         doc.data['capacity'],
-         doc.data['price'],
-         doc.data['description'],
-         doc.data["user_name"],
-         doc.data["user_phone"],
-         doc.data["user_email"], 
-         doc.data['lat'],
-         doc.data['lng'],
+        doc.documentID,
+        doc.data['user_id'],
+        doc.data['address'],
+        doc.data['surface'],
+        doc.data['capacity'],
+        doc.data['price'],
+        doc.data['description'],
+        doc.data["user_name"],
+        doc.data["user_phone"],
+        doc.data["user_email"],
+        doc.data['lat'],
+        doc.data['lng'],
       );
     }).toList();
   }
@@ -105,23 +104,23 @@ class DatabaseService {
   // get Request stream
   Stream<List<Offer>> get offers {
     return offersCollection.snapshots()
-      .map(_offersListFromSnapshot);
+        .map(_offersListFromSnapshot);
   }
   User _getUser(DocumentSnapshot snapshot) {
-      return new User(
-            snapshot.data["uid"],
-            snapshot.data['name'],
-            snapshot.data['email'],
-            snapshot.data['phone']);
-    }
-  
-  Stream<User> get users {
-    return offersCollection.document(uid).snapshots()
-      .map(_getUser);
+    return new User(
+        snapshot.data["uid"],
+        snapshot.data['name'],
+        snapshot.data['email'],
+        snapshot.data['phone']);
   }
 
-  
- 
+  Stream<User> get users {
+    return offersCollection.document(uid).snapshots()
+        .map(_getUser);
+  }
+
+
+
 
 
 }

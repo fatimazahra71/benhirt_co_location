@@ -12,11 +12,13 @@ class OfferTile extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
         child: ListTile(
-          leading: CircleAvatar(
-            radius: 25.0,
+          leading:Image(
+            image: AssetImage('assets/images/house.png'),
+            fit: BoxFit.fill,
           ),
-          title: Text(offer.price.toString()+' DH'),
-          subtitle: Text(offer.description),
+
+          title: Text(offer.address),
+          subtitle: Text(offer.price.toString()+'DH'),
           onTap: () {
             showDialog(
                 context: context,
